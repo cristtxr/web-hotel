@@ -1,0 +1,130 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '@/layouts/Layout.astro';
+import hero from '@/assets/images/aerial-day.jpg';
+import blueprint from '@/assets/images/blueprint.jpg';
+import build01 from '@/assets/images/build-01.jpg';
+import build02 from '@/assets/images/build-02.jpg';
+import build03 from '@/assets/images/build-03.jpg';
+import build04 from '@/assets/images/build-04.jpg';
+import build05 from '@/assets/images/build-05.jpg';
+import build06 from '@/assets/images/build-06.jpg';
+import exterior from '@/assets/images/exterior-pool.jpg';
+import concept from '@/assets/images/concept-plan.jpg';
+import night from '@/assets/images/exterior-night.jpg';
+
+const buildFrames = [
+  { src: blueprint, alt: 'Plano arquitectónico original', label: 'Blueprint' },
+  { src: build01, alt: 'Estructura inicial del hotel', label: 'Estructura' },
+  { src: build02, alt: 'Estructura de madera en progreso', label: 'Volumen' },
+  { src: build03, alt: 'Cubiertas y piscina en construcción', label: 'Cubierta' },
+  { src: build04, alt: 'Edificio con materiales principales', label: 'Materia' },
+  { src: build05, alt: 'Hotel casi terminado y paisaje en desarrollo', label: 'Paisaje' },
+  { src: build06, alt: 'Finca Luna Nueva terminada', label: 'Habitar' },
+];
+---
+
+<Layout
+  title="The Place — Finca Luna Nueva"
+  description="Descubre cómo Finca Luna Nueva fue dibujada, construida e integrada a la montaña."
+  page="place"
+>
+  <section class="world-hero world-hero--place" aria-labelledby="place-title">
+    <div class="world-hero-image" data-hero-image style="view-transition-name: portal-place">
+      <Image src={hero} alt="La finca integrada en el territorio cafetero" widths={[640, 960, 1376]} sizes="100vw" format="webp" quality={86} loading="eager" fetchpriority="high" />
+    </div>
+    <div class="world-hero-shade"></div>
+    <a href="/#showroom" class="back-hub" data-return-hub data-cursor="Volver"><span>←</span> Volver al showroom</a>
+    <div class="world-hero-copy">
+      <p class="eyebrow">03 / 03 · Arquitectura</p>
+      <h1 id="place-title">The place</h1>
+      <p>Una casa dibujada desde la pendiente, el clima y la forma de mirar.</p>
+    </div>
+    <p class="world-scroll">De la línea al paisaje <span>↓</span></p>
+  </section>
+
+  <section class="place-intro editorial-intro" aria-labelledby="place-intro-title">
+    <p class="eyebrow">Cómo nació</p>
+    <h2 id="place-intro-title">Primero fue<br />una línea.</h2>
+    <p>Después una estructura. Luego la madera, el agua y la vegetación. Desliza para construir el hotel.</p>
+  </section>
+
+  <section class="construction" data-construction aria-label="Secuencia de construcción de Finca Luna Nueva">
+    <div class="construction-stage">
+      <div class="construction-frames">
+        {buildFrames.map((frame, index) => (
+          <figure class:list={['construction-frame', { 'is-first': index === 0 }]} data-build-frame={index}>
+            <Image src={frame.src} alt={frame.alt} widths={[640, 960, 1376]} sizes="100vw" format="webp" quality={82} loading={index < 2 ? 'eager' : 'lazy'} />
+          </figure>
+        ))}
+      </div>
+      <div class="construction-ui">
+        <p>Scroll = construir</p>
+        <div class="construction-status">
+          <span data-build-count>01</span>
+          <strong data-build-label>Blueprint</strong>
+        </div>
+        <div class="construction-progress"><i data-build-progress></i></div>
+        <span>07</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="material-story" aria-labelledby="material-title">
+    <header class="material-copy">
+      <p class="eyebrow">La arquitectura</p>
+      <h2 id="material-title">Nada compite<br />con el entorno.</h2>
+      <p>Las cubiertas siguen la montaña. La madera suaviza la escala. Los corredores dejan pasar el aire.</p>
+      <dl>
+        <div><dt>01</dt><dd>Madera local</dd></div>
+        <div><dt>02</dt><dd>Teja de barro</dd></div>
+        <div><dt>03</dt><dd>Piedra del lugar</dd></div>
+      </dl>
+    </header>
+    <figure class="material-image" data-reveal-image data-parallax data-speed="0.1">
+      <Image src={exterior} alt="Fachada, corredores de madera y piscina" widths={[720, 960, 1200, 1376]} sizes="(max-width: 900px) 200vw, 100vw" format="webp" quality={90} loading="lazy" />
+    </figure>
+  </section>
+
+  <section class="concept-story" aria-labelledby="concept-title">
+    <figure data-reveal-image>
+      <Image src={concept} alt="Esquema visual original de Finca Luna Nueva" widths={[640, 960, 1376]} sizes="(min-width: 900px) 72vw, 94vw" format="webp" quality={84} loading="lazy" />
+    </figure>
+    <div>
+      <p class="eyebrow">La idea original</p>
+      <h2 id="concept-title">Alojamiento,<br />café y bosque.</h2>
+      <p>La finca fue pensada como una secuencia: llegar por el paisaje, encontrarse en la terraza y descansar cerca del bosque.</p>
+    </div>
+  </section>
+
+  <section class="territory" aria-labelledby="territory-title">
+    <div class="territory-image" data-parallax data-speed="0.12">
+      <Image src={hero} alt="Vista aérea del hotel y los cultivos de café" widths={[640, 960, 1376]} sizes="100vw" format="webp" quality={86} loading="lazy" />
+    </div>
+    <div class="territory-copy">
+      <p class="eyebrow">La escala cambia</p>
+      <h2 id="territory-title">Detalle.<br />Edificio.<br />Territorio.</h2>
+    </div>
+    <div class="territory-map" aria-label="Lugares cercanos">
+      <svg viewBox="0 0 900 500" aria-hidden="true">
+        <path data-route-path d="M80 405C190 385 240 270 340 280S485 365 560 260 690 110 825 95" />
+      </svg>
+      <span class="map-point map-point--hotel"><b>01</b> Hotel</span>
+      <span class="map-point map-point--trail"><b>02</b> Sendero · 4 min</span>
+      <span class="map-point map-point--town"><b>03</b> Pueblo · 18 min</span>
+      <span class="map-point map-point--airport"><b>04</b> Aeropuerto · 54 min</span>
+    </div>
+  </section>
+
+  <section class="world-closing world-closing--place">
+    <Image src={night} alt="El hotel iluminado durante la noche" widths={[640, 960, 1376]} sizes="100vw" format="webp" quality={84} loading="lazy" />
+    <div>
+      <p class="eyebrow">La última luz</p>
+      <h2>Ahora puedes<br />habitarlo.</h2>
+      <div>
+        <a class="text-link text-link--light" href="/#showroom" data-return-hub>Volver al showroom <span>←</span></a>
+        <button type="button" class="text-link text-link--light" data-book-open>Reservar <span>↗</span></button>
+      </div>
+    </div>
+  </section>
+</Layout>

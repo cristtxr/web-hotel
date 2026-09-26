@@ -1,0 +1,93 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '@/layouts/Layout.astro';
+import restaurant from '@/assets/images/restaurant.jpg';
+import pool from '@/assets/images/pool-water.jpg';
+import outdoorShower from '@/assets/images/outdoor-shower.jpg';
+import poolDeck from '@/assets/images/pool-deck.jpg';
+import exterior from '@/assets/images/exterior-pool.jpg';
+---
+
+<Layout
+  title="Experience — Finca Luna Nueva"
+  description="Mesa, agua, silencio y montaña. Descubre los ritmos de Finca Luna Nueva."
+  page="experience"
+>
+  <section class="world-hero world-hero--experience" aria-labelledby="experience-title">
+    <div class="world-hero-image" data-hero-image style="view-transition-name: portal-experience">
+      <Image src={restaurant} alt="Restaurante abierto a la montaña" widths={[640, 960, 1376]} sizes="100vw" format="webp" quality={86} loading="eager" fetchpriority="high" />
+    </div>
+    <div class="world-hero-shade"></div>
+    <a href="/#showroom" class="back-hub" data-return-hub data-cursor="Volver"><span>←</span> Volver al showroom</a>
+    <div class="world-hero-copy">
+      <p class="eyebrow">02 / 03 · Rituales</p>
+      <h1 id="experience-title">Experience</h1>
+      <p>La finca se descubre en lo que haces —y en lo que decides no hacer.</p>
+    </div>
+    <nav class="chapter-index" aria-label="Capítulos de experiencia">
+      <a href="#gather">01 Gather</a><a href="#immerse">02 Immerse</a><a href="#reset">03 Reset</a><a href="#outside">04 Outside</a>
+    </nav>
+  </section>
+
+  <section class="experience-chapter experience-chapter--gather" id="gather" aria-labelledby="gather-title">
+    <div class="chapter-copy">
+      <span>01 / 04</span>
+      <p class="eyebrow">Gather</p>
+      <h2 id="gather-title">La mesa reúne<br />lo que crece aquí.</h2>
+      <p>Café de la ladera. Fruta del huerto. Una cocina abierta que acompaña la conversación.</p>
+    </div>
+    <figure class="chapter-main-image" data-reveal-image data-parallax data-speed="0.08">
+      <Image src={restaurant} alt="Mesa del restaurante de la finca" widths={[640, 960, 1376]} sizes="(min-width: 900px) 74vw, 100vw" format="webp" quality={84} loading="lazy" />
+    </figure>
+    <div class="chapter-note"><span>07:20</span><p>El primer café<br />con niebla baja.</p></div>
+  </section>
+
+  <section class="experience-chapter experience-chapter--immerse" id="immerse" aria-labelledby="immerse-title">
+    <div class="water-wipe" aria-hidden="true"></div>
+    <figure class="chapter-full-image" data-parallax data-speed="0.12">
+      <Image src={pool} alt="Piscina frente a las montañas" widths={[640, 960, 1376]} sizes="100vw" format="webp" quality={86} loading="lazy" />
+    </figure>
+    <div class="chapter-overlay-copy">
+      <span>02 / 04</span>
+      <p class="eyebrow">Immerse</p>
+      <h2 id="immerse-title">El agua cambia<br />la velocidad.</h2>
+      <p>Una piscina entre café, piedra y horizonte.</p>
+    </div>
+  </section>
+
+  <section class="experience-chapter experience-chapter--reset" id="reset" aria-labelledby="reset-title">
+    <header class="reset-heading">
+      <span>03 / 04</span>
+      <p class="eyebrow">Reset</p>
+      <h2 id="reset-title">Deja afuera<br />todo el ruido.</h2>
+    </header>
+    <figure class="reset-image" data-reveal-image data-parallax data-speed="0.09">
+      <Image src={outdoorShower} alt="Ducha exterior entre piedra y vegetación" widths={[720, 960, 1200, 1376]} sizes="(max-width: 900px) 200vw, 100vw" format="webp" quality={90} loading="lazy" />
+      <figcaption>Ducha exterior · Bosque privado</figcaption>
+    </figure>
+    <p class="reset-body">Piedra fresca. Agua templada. El olor del bosque después de la lluvia. Aquí no hay nada que completar.</p>
+  </section>
+
+  <section class="experience-chapter experience-chapter--outside" id="outside" aria-labelledby="outside-title">
+    <figure class="outside-image outside-image--first" data-reveal-image>
+      <Image src={poolDeck} alt="Terraza de piscina entre pinos" widths={[640, 960, 1376]} sizes="(min-width: 900px) 68vw, 95vw" format="webp" quality={84} loading="lazy" />
+    </figure>
+    <header>
+      <span>04 / 04</span>
+      <p class="eyebrow">Outside</p>
+      <h2 id="outside-title">Sal del hotel.<br />Entra al paisaje.</h2>
+    </header>
+    <figure class="outside-image outside-image--last" data-parallax data-speed="0.13">
+      <Image src={exterior} alt="Finca, piscina y paisaje cafetero" widths={[640, 960, 1376]} sizes="100vw" format="webp" quality={86} loading="lazy" />
+    </figure>
+  </section>
+
+  <section class="experience-closing">
+    <p class="eyebrow">Cuando quieras volver</p>
+    <h2>La mesa,<br />el agua,<br />la montaña.</h2>
+    <div class="experience-actions">
+      <a href="/#showroom" class="text-link" data-return-hub>Volver al showroom <span>←</span></a>
+      <button type="button" class="text-link" data-book-open>Reservar la experiencia <span>↗</span></button>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,52 @@
+---
+import Header from '@/components/Header.astro';
+import BookingOverlay from '@/components/BookingOverlay.astro';
+import '@/styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  page: 'home' | 'stay' | 'experience' | 'place';
+  darkHeader?: boolean;
+}
+
+const { title, description, page, darkHeader = true } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#172018" />
+    <meta name="view-transition" content="same-origin" />
+    <link rel="canonical" href={canonical} />
+    <title>{title}</title>
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Hotel',
+      name: 'Finca Luna Nueva',
+      description,
+      address: {
+        '@type': 'PostalAddress',
+        addressCountry: 'CO',
+        addressRegion: 'Región cafetera',
+      },
+    })}></script>
+  </head>
+  <body data-page={page} data-header={darkHeader ? 'light' : 'dark'}>
+    <a class="skip-link" href="#main">Ir al contenido</a>
+    <Header active={page} />
+    <main id="main">
+      <slot />
+    </main>
+    <BookingOverlay />
+    <div class="pointer" aria-hidden="true"><span>Explorar</span></div>
+    <div class="route-veil" aria-hidden="true"></div>
+    <script>
+      import '@/scripts/site';
+    </script>
+  </body>
+</html>

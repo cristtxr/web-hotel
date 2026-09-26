@@ -1,0 +1,105 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '@/layouts/Layout.astro';
+import hero from '@/assets/images/hero-day.jpg';
+import room from '@/assets/images/room-forest.jpg';
+import restaurant from '@/assets/images/restaurant.jpg';
+import place from '@/assets/images/aerial-day.jpg';
+import night from '@/assets/images/exterior-night.jpg';
+---
+
+<Layout
+  title="Finca Luna Nueva — Hotel boutique en la montaña"
+  description="Un refugio de arquitectura cálida, café y montaña. Explora Finca Luna Nueva antes de tu llegada."
+  page="home"
+>
+  <div class="preloader" data-preloader aria-hidden="true">
+    <div class="preloader-copy">
+      <p>Finca Luna Nueva</p>
+      <span>Montaña cafetera · Colombia</span>
+    </div>
+    <span class="preloader-progress" data-loader-progress>0</span>
+    <div class="preloader-door preloader-door--left"><span class="door-handle"></span></div>
+    <div class="preloader-door preloader-door--right"><span class="door-handle"></span></div>
+  </div>
+
+  <div class="home-horizontal" data-home-horizontal>
+    <div class="home-horizontal-track" data-home-track>
+  <section class="home-hero" aria-labelledby="home-title">
+    <div class="hero-image" data-hero-image>
+      <Image
+        src={hero}
+        alt="Finca Luna Nueva entre montañas y cultivos de café"
+        widths={[640, 960, 1376]}
+        sizes="100vw"
+        format="webp"
+        quality={86}
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
+    <div class="hero-shade"></div>
+    <div class="hero-intro">
+      <p class="hero-kicker reveal-line">Un hotel para bajar el ritmo</p>
+      <h1 id="home-title" class="hero-title" aria-label="Finca Luna Nueva">
+        <span class="line"><span>Finca Luna</span></span>
+        <span class="line line--indent"><span>Nueva<sup>®</sup></span></span>
+      </h1>
+      <div class="hero-meta reveal-line">
+        <span>04°33' N · 75°39' O</span>
+        <span>Montaña cafetera, Colombia</span>
+      </div>
+    </div>
+    <p class="scroll-cue"><span></span> Entra al hotel</p>
+  </section>
+
+  <section class="showroom" id="showroom" aria-labelledby="showroom-title">
+    <div class="showroom-head">
+      <p class="eyebrow">El showroom</p>
+      <h2 id="showroom-title">Elige por dónde<br />quieres entrar.</h2>
+      <p>No es un recorrido fijo. Acércate a la parte del hotel que quieres descubrir primero.</p>
+    </div>
+
+    <div class="portals" data-portals>
+      <a class="portal portal--stay" href="/stay" data-portal data-cursor="Entrar" aria-label="Explorar habitaciones">
+        <figure class="portal-visual">
+          <Image src={room} alt="Habitación Forest con vista a la montaña" widths={[720, 960, 1200, 1376]} sizes="(max-width: 900px) 200vw, 100vw" format="webp" quality={90} loading="eager" />
+        </figure>
+        <span class="portal-number">01 / 03</span>
+        <span class="portal-title">Stay</span>
+        <span class="portal-action">Habitaciones <b>↗</b></span>
+      </a>
+
+      <a class="portal portal--experience" href="/experience" data-portal data-cursor="Entrar" aria-label="Explorar experiencias">
+        <figure class="portal-visual">
+          <Image src={restaurant} alt="Salón y restaurante de Finca Luna Nueva" widths={[720, 960, 1200, 1376]} sizes="(max-width: 900px) 200vw, 100vw" format="webp" quality={90} loading="eager" />
+        </figure>
+        <span class="portal-number">02 / 03</span>
+        <span class="portal-title">Experience</span>
+        <span class="portal-action">Rituales del lugar <b>↗</b></span>
+      </a>
+
+      <a class="portal portal--place" href="/place" data-portal data-cursor="Entrar" aria-label="Explorar el lugar y su arquitectura">
+        <figure class="portal-visual">
+          <Image src={place} alt="Vista aérea de la finca y la montaña" widths={[720, 960, 1200, 1376]} sizes="(max-width: 900px) 200vw, 100vw" format="webp" quality={90} loading="eager" />
+        </figure>
+        <span class="portal-number">03 / 03</span>
+        <span class="portal-title">The place</span>
+        <span class="portal-action">Arquitectura y territorio <b>↗</b></span>
+      </a>
+    </div>
+  </section>
+
+  <section class="home-closing" aria-labelledby="closing-title">
+    <div class="home-closing-image" data-parallax data-speed="0.12">
+      <Image src={night} alt="Finca Luna Nueva iluminada al caer la noche" widths={[640, 960, 1376]} sizes="100vw" format="webp" quality={84} loading="lazy" />
+    </div>
+    <div class="home-closing-copy">
+      <p class="eyebrow">Una última puerta</p>
+      <h2 id="closing-title">La montaña<br />te espera.</h2>
+      <button type="button" class="text-link text-link--light" data-book-open data-cursor="Reservar">Book your stay <span>↗</span></button>
+    </div>
+  </section>
+    </div>
+  </div>
+</Layout>

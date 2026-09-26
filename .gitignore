@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.astro/
+.codex-contact.jpg
+.edge-qa-profile/
+home-desktop.png
+home-mobile.png
+home-portals-desktop.png
+home-portals-mobile.png
+home-flow-desktop.png
+home-flow-mobile.png
+booking-desktop.png
+stay-desktop.png
+experience-desktop.png
+place-desktop.png

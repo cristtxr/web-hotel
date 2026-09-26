@@ -1,0 +1,132 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '@/layouts/Layout.astro';
+import forest from '@/assets/images/room-forest.jpg';
+import terrace from '@/assets/images/suite-terrace.jpg';
+import panorama from '@/assets/images/suite-panorama.jpg';
+import lounge from '@/assets/images/lounge.jpg';
+import sitting from '@/assets/images/room-sitting.jpg';
+import bathroom from '@/assets/images/bathroom.jpg';
+import poolDeck from '@/assets/images/pool-deck.jpg';
+---
+
+<Layout
+  title="Stay — Finca Luna Nueva"
+  description="Habitaciones abiertas a la montaña. Recorre las estancias de Finca Luna Nueva."
+  page="stay"
+>
+  <section class="world-hero world-hero--stay" aria-labelledby="stay-title">
+    <div class="world-hero-image" data-hero-image style="view-transition-name: portal-stay">
+      <Image src={forest} alt="Habitación Forest abierta hacia la montaña" widths={[640, 960, 1376]} sizes="100vw" format="webp" quality={86} loading="eager" fetchpriority="high" />
+    </div>
+    <div class="world-hero-shade"></div>
+    <a href="/#showroom" class="back-hub" data-return-hub data-cursor="Volver"><span>←</span> Volver al showroom</a>
+    <div class="world-hero-copy">
+      <p class="eyebrow">01 / 03 · Habitaciones</p>
+      <h1 id="stay-title">Stay</h1>
+      <p>Despertar con la montaña entrando por la ventana.</p>
+    </div>
+    <p class="world-scroll">Tres maneras de quedarse <span>↓</span></p>
+  </section>
+
+  <section class="rooms-intro editorial-intro" aria-labelledby="rooms-title">
+    <p class="eyebrow">Elige tu refugio</p>
+    <h2 id="rooms-title">Habitaciones que<br />miran hacia afuera.</h2>
+    <p>La madera, la luz y el paisaje cambian. La calma se mantiene.</p>
+  </section>
+
+  <section class="rooms-showroom" aria-label="Selección de habitaciones" data-horizontal-rooms>
+    <div class="rooms-track" data-rooms-track>
+      <article class="room-card">
+        <a href="#room-journey" data-room-link data-room-name="Forest Room" data-cursor="Ver suite">
+          <figure><Image src={forest} alt="Forest Room" widths={[720, 960, 1200, 1376]} sizes="(max-width: 900px) 200vw, 100vw" format="webp" quality={90} loading="eager" /></figure>
+          <div class="room-card-copy"><span>01</span><h3>Forest<br />Room</h3><p>38 m² · 2 huéspedes</p></div>
+        </a>
+      </article>
+      <article class="room-card room-card--portrait">
+        <a href="#room-journey" data-room-link data-room-name="Terrace Suite" data-cursor="Ver suite">
+          <figure><Image src={terrace} alt="Terrace Suite con balcón privado" widths={[720, 960, 1200, 1376]} sizes="(max-width: 900px) 200vw, 100vw" format="webp" quality={90} loading="eager" /></figure>
+          <div class="room-card-copy"><span>02</span><h3>Terrace<br />Suite</h3><p>52 m² · Terraza privada</p></div>
+        </a>
+      </article>
+      <article class="room-card">
+        <a href="#room-journey" data-room-link data-room-name="Panorama Suite" data-cursor="Ver suite">
+          <figure><Image src={panorama} alt="Panorama Suite en la luz de la tarde" widths={[720, 960, 1200, 1376]} sizes="(max-width: 900px) 200vw, 100vw" format="webp" quality={90} loading="eager" /></figure>
+          <div class="room-card-copy"><span>03</span><h3>Panorama<br />Suite</h3><p>64 m² · Vista 180°</p></div>
+        </a>
+      </article>
+      <div class="rooms-end" aria-hidden="true"><span>Elige una habitación</span><b>↗</b></div>
+    </div>
+  </section>
+
+  <section class="room-journey" id="room-journey" aria-labelledby="journey-title">
+    <header class="journey-head">
+      <p class="eyebrow">Recorrido interior · <span data-selected-room>Panorama Suite</span></p>
+      <h2 id="journey-title">Dentro, todo<br />baja el volumen.</h2>
+      <dl>
+        <div><dt>Capacidad</dt><dd>2 huéspedes</dd></div>
+        <div><dt>Vista</dt><dd>Montaña</dd></div>
+        <div><dt>Incluye</dt><dd>Desayuno</dd></div>
+      </dl>
+    </header>
+
+    <figure class="journey-image journey-image--wide" data-reveal-image data-parallax data-speed="0.1">
+      <Image src={sitting} alt="Rincón de lectura frente al valle" widths={[640, 960, 1376]} sizes="(min-width: 900px) 72vw, 94vw" format="webp" quality={84} loading="lazy" />
+      <figcaption>01 — Un lugar para no mirar el reloj</figcaption>
+    </figure>
+
+    <div class="journey-pair">
+      <div class="journey-text">
+        <p class="eyebrow">Materia</p>
+        <h3>Madera tibia.<br />Aire de montaña.</h3>
+        <p>Texturas honestas, ventilación natural y una arquitectura que no interrumpe el paisaje.</p>
+      </div>
+      <figure class="journey-image journey-image--tall" data-reveal-image data-parallax data-speed="0.14">
+        <Image src={lounge} alt="Sala privada de la suite" widths={[720, 960, 1200, 1376]} sizes="(max-width: 900px) 200vw, 100vw" format="webp" quality={90} loading="lazy" />
+        <figcaption>02 — Sala privada</figcaption>
+      </figure>
+    </div>
+
+    <figure class="journey-image journey-image--bath" data-reveal-image>
+      <Image src={bathroom} alt="Baño de la suite frente a la montaña" widths={[640, 960, 1376]} sizes="(min-width: 900px) 68vw, 94vw" format="webp" quality={84} loading="lazy" />
+      <figcaption>03 — Baño abierto al valle</figcaption>
+    </figure>
+  </section>
+
+  <section class="floorplan" aria-labelledby="floorplan-title" data-floorplan>
+    <header>
+      <p class="eyebrow">El espacio</p>
+      <h2 id="floorplan-title">Una suite,<br />cuatro momentos.</h2>
+      <p>Toca los puntos para mirar cada ambiente.</p>
+    </header>
+    <div class="floorplan-board">
+      <svg class="floorplan-lines" viewBox="0 0 900 560" role="img" aria-label="Plano ilustrado de la Panorama Suite">
+        <path d="M55 75H620V40H845V520H55Z" />
+        <path d="M55 340H420V520M420 75V520M620 40V340H845M420 340H845" />
+        <path d="M165 75V96M198 75V96M510 340V365M545 340V365" />
+        <rect x="105" y="125" width="235" height="140" />
+        <rect x="485" y="110" width="95" height="165" />
+        <path d="M670 410h120v72H670zM85 375h290v110H85z" />
+      </svg>
+      <button class="hotspot hotspot--1 is-active" type="button" data-hotspot="0"><span>01</span> Dormir</button>
+      <button class="hotspot hotspot--2" type="button" data-hotspot="1"><span>02</span> Pausar</button>
+      <button class="hotspot hotspot--3" type="button" data-hotspot="2"><span>03</span> Baño</button>
+      <button class="hotspot hotspot--4" type="button" data-hotspot="3"><span>04</span> Vista</button>
+    </div>
+    <div class="floorplan-preview" data-hotspot-preview>
+      <Image class="is-active" data-preview-index="0" src={panorama} alt="Área de descanso" widths={[720, 960, 1200, 1376]} sizes="(max-width: 900px) 200vw, 100vw" format="webp" quality={90} loading="lazy" />
+      <Image data-preview-index="1" src={sitting} alt="Rincón de lectura" widths={[720, 960, 1200, 1376]} sizes="(max-width: 900px) 200vw, 100vw" format="webp" quality={90} loading="lazy" />
+      <Image data-preview-index="2" src={bathroom} alt="Baño" widths={[720, 960, 1200, 1376]} sizes="(max-width: 900px) 200vw, 100vw" format="webp" quality={90} loading="lazy" />
+      <Image data-preview-index="3" src={poolDeck} alt="Vista exterior y piscina" widths={[720, 960, 1200, 1376]} sizes="(max-width: 900px) 200vw, 100vw" format="webp" quality={90} loading="lazy" />
+    </div>
+  </section>
+
+  <section class="world-closing world-closing--stay">
+    <Image src={poolDeck} alt="Terraza y piscina de la finca" widths={[640, 960, 1376]} sizes="100vw" format="webp" quality={84} loading="lazy" />
+    <div>
+      <p class="eyebrow">Tu habitación está lista</p>
+      <h2>Quédate<br />un poco más.</h2>
+      <button type="button" class="text-link text-link--light" data-book-open>Consultar fechas <span>↗</span></button>
+    </div>
+  </section>
+</Layout>
