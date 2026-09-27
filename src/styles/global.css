@@ -354,12 +354,12 @@
     .home-horizontal { width: 100%; height: 100svh; overflow: hidden; background: var(--paper); }
     .home-horizontal-track { width: max-content; height: 100%; display: flex; align-items: stretch; will-change: transform; }
     .home-horizontal .home-hero { width: 100vw; flex: 0 0 100vw; }
-    .home-horizontal .showroom { width: 232vw; min-height: 0; height: 100svh; flex: 0 0 232vw; display: grid; grid-template-columns: 56vw 168vw; gap: 4vw; align-items: center; padding: 0 4vw; overflow: hidden; }
-    .home-horizontal .showroom-head { grid-template-columns: 1fr; align-items: start; margin: 0; }
-    .home-horizontal .showroom-head h2 { font-size: clamp(3.6rem, 14vw, 6rem); }
-    .home-horizontal .showroom-head > p:last-child { max-width: 46vw; padding: 1.6rem 0 0; font-size: .82rem; }
-    .home-horizontal .portals { width: 168vw; height: 80svh; min-height: 0; display: flex; gap: 4vw; align-items: center; perspective: none; }
-    .home-horizontal .portal { position: relative; inset: auto; width: 52vw; flex: 0 0 auto; aspect-ratio: .78; transform: none; }
+    .home-horizontal .showroom { width: auto; min-height: 0; height: 100svh; flex: 0 0 auto; display: flex; align-items: stretch; padding: 0; overflow: hidden; }
+    .home-horizontal .showroom-head { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 1.2rem; width: 100vw; height: 100svh; flex: 0 0 100vw; margin: 0; padding: 0 var(--pad); }
+    .home-horizontal .showroom-head h2 { font-size: clamp(3.4rem, 11.5vw, 6rem); }
+    .home-horizontal .showroom-head > p:last-child { max-width: min(72vw, 24rem); padding: .6rem 0 0; font-size: .85rem; }
+    .home-horizontal .portals { width: auto; height: 100svh; min-height: 0; display: flex; gap: 5vw; align-items: center; padding: 0 8vw 0 5vw; perspective: none; }
+    .home-horizontal .portal { position: relative; inset: auto; width: 62vw; flex: 0 0 auto; aspect-ratio: .78; transform: none; }
     .home-horizontal .portal-title { font-size: clamp(2.2rem, 9vw, 4rem); }
     .home-horizontal .portal-action { display: none; }
     .home-horizontal .home-closing { width: 100vw; min-height: 0; height: 100svh; flex: 0 0 100vw; }
@@ -428,7 +428,7 @@
     .territory-copy { min-height: 56svh; padding: 10vh var(--pad) 7vh; }
     .territory-copy h2 { font-size: clamp(4.5rem, 21vw, 8rem); }
     .territory-map { margin: 2vh var(--pad) 8vh; height: 30rem; }
-    .map-point--hotel { left: 2%; }.map-point--trail { left: 26%; }.map-point--town { left: 58%; }.map-point--airport { right: 0; }
+    .map-point--hotel { left: 8%; bottom: 13%; }.map-point--trail { left: 34%; top: 50%; }.map-point--town { left: 58%; top: 45%; }.map-point--airport { right: 1%; top: 13%; }
     .world-closing h2 { font-size: clamp(4.2rem, 19vw, 8rem); }
   }
 

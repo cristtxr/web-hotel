@@ -226,7 +226,7 @@ function setupScrollMotion() {
     });
   });
   qsa<HTMLElement>('[data-parallax]').forEach((wrap) => {
-    if (window.innerWidth > 900 && wrap.closest('[data-home-horizontal]')) return;
+    if (wrap.closest('[data-home-horizontal]')) return;
     const image = qs<HTMLImageElement>('img', wrap);
     const speed = Number(wrap.dataset.speed ?? .1);
     const portrait = wrap.matches('.journey-image--tall, .reset-image, .material-image, .floorplan-preview');
@@ -386,6 +386,8 @@ function setupConstruction() {
 function setupMap() {
   const path = qs<SVGPathElement>('[data-route-path]');
   if (!path || reducedMotion) return;
+  const svg = path.closest('svg');
+  if (svg && window.innerWidth <= 900) svg.setAttribute('preserveAspectRatio', 'none');
   const length = path.getTotalLength();
   gsap.set(path, { strokeDasharray: length, strokeDashoffset: length });
   gsap.to(path, { strokeDashoffset: 0, ease: 'none', scrollTrigger: { trigger: '.territory-map', start: 'top 80%', end: 'bottom 65%', scrub: true } });
