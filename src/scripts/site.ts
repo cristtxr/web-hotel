@@ -238,12 +238,6 @@ function setupScrollMotion() {
       scrollTrigger: { trigger: wrap, start: 'top bottom', end: 'bottom top', scrub: true },
     });
   });
-  const showroom = qs<HTMLElement>('.showroom');
-  if (showroom && window.innerWidth <= 900) {
-    gsap.fromTo('.portal', { y: 120 }, { y: 0, stagger: .13, duration: .9, ease: 'power3.out', scrollTrigger: { trigger: '.portals', start: 'top 78%' } });
-    gsap.to('.home-hero .hero-image', { scale: .9, ease: 'none', scrollTrigger: { trigger: '.home-hero', start: 'top top', end: 'bottom top', scrub: true } });
-  }
-
   if (qs('.room-journey')) {
     gsap.fromTo('.journey-head h2', { y: 90 }, { y: -35, ease: 'none', scrollTrigger: { trigger: '.journey-head', start: 'top bottom', end: 'bottom top', scrub: true } });
     gsap.fromTo('.journey-image--wide', { xPercent: 5 }, { xPercent: -3, ease: 'none', scrollTrigger: { trigger: '.journey-image--wide', start: 'top bottom', end: 'bottom top', scrub: true } });
@@ -263,49 +257,45 @@ function setupHomeHorizontal() {
   const track = qs<HTMLElement>('[data-home-track]');
   if (!section || !track || reducedMotion) return;
 
-  const media = gsap.matchMedia();
-  media.add('(min-width: 901px)', () => {
-    const distance = () => Math.max(0, track.scrollWidth - window.innerWidth);
-    const horizontal = gsap.to(track, {
-      x: () => -distance(),
-      ease: 'none',
-      scrollTrigger: {
-        trigger: section,
-        start: 'top top',
-        end: () => `+=${distance()}`,
-        pin: true,
-        scrub: 1,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-      },
-    });
+  const distance = () => Math.max(0, track.scrollWidth - window.innerWidth);
+  const horizontal = gsap.to(track, {
+    x: () => -distance(),
+    ease: 'none',
+    scrollTrigger: {
+      trigger: section,
+      start: 'top top',
+      end: () => `+=${distance()}`,
+      pin: true,
+      scrub: 1,
+      anticipatePin: 1,
+      invalidateOnRefresh: true,
+    },
+  });
 
-    gsap.to('.hero-image img', {
-      xPercent: 9,
-      scale: 1.08,
-      ease: 'none',
-      scrollTrigger: { trigger: '.home-hero', containerAnimation: horizontal, start: 'left left', end: 'right left', scrub: true },
-    });
-    gsap.fromTo('.showroom-head', { x: 110 }, {
-      x: -35,
-      ease: 'none',
-      scrollTrigger: { trigger: '.showroom', containerAnimation: horizontal, start: 'left right', end: 'left 18%', scrub: true },
-    });
-    qsa<HTMLImageElement>('.portal-visual img').forEach((image) => {
-      gsap.fromTo(image, { xPercent: -7, scale: 1.035 }, {
-        xPercent: 7,
-        scale: 1.015,
-        ease: 'none',
-        scrollTrigger: { trigger: image.closest('.portal'), containerAnimation: horizontal, start: 'left right', end: 'right left', scrub: true },
-      });
-    });
-    gsap.fromTo('.home-closing-image img', { xPercent: -7, scale: 1.13 }, {
+  gsap.to('.hero-image img', {
+    xPercent: 9,
+    scale: 1.08,
+    ease: 'none',
+    scrollTrigger: { trigger: '.home-hero', containerAnimation: horizontal, start: 'left left', end: 'right left', scrub: true },
+  });
+  gsap.fromTo('.showroom-head', { x: 110 }, {
+    x: -35,
+    ease: 'none',
+    scrollTrigger: { trigger: '.showroom', containerAnimation: horizontal, start: 'left right', end: 'left 18%', scrub: true },
+  });
+  qsa<HTMLImageElement>('.portal-visual img').forEach((image) => {
+    gsap.fromTo(image, { xPercent: -7, scale: 1.035 }, {
       xPercent: 7,
-      scale: 1.04,
+      scale: 1.015,
       ease: 'none',
-      scrollTrigger: { trigger: '.home-closing', containerAnimation: horizontal, start: 'left right', end: 'right left', scrub: true },
+      scrollTrigger: { trigger: image.closest('.portal'), containerAnimation: horizontal, start: 'left right', end: 'right left', scrub: true },
     });
-    return () => horizontal.kill();
+  });
+  gsap.fromTo('.home-closing-image img', { xPercent: -7, scale: 1.13 }, {
+    xPercent: 7,
+    scale: 1.04,
+    ease: 'none',
+    scrollTrigger: { trigger: '.home-closing', containerAnimation: horizontal, start: 'left right', end: 'right left', scrub: true },
   });
 }
 
@@ -313,17 +303,13 @@ function setupRooms() {
   const section = qs<HTMLElement>('[data-horizontal-rooms]');
   const track = qs<HTMLElement>('[data-rooms-track]');
   if (section && track && !reducedMotion) {
-    const media = gsap.matchMedia();
-    media.add('(min-width: 901px)', () => {
-      const tween = gsap.to(track, {
-        x: () => -(track.scrollWidth - window.innerWidth),
-        ease: 'none',
-        scrollTrigger: { trigger: section, start: 'top top', end: () => `+=${track.scrollWidth - window.innerWidth}`, pin: true, scrub: 1, invalidateOnRefresh: true },
-      });
-      qsa<HTMLImageElement>('.room-card img').forEach((image) => {
-        gsap.to(image, { xPercent: 8, ease: 'none', scrollTrigger: { trigger: image.closest('.room-card'), containerAnimation: tween, start: 'left right', end: 'right left', scrub: true } });
-      });
-      return () => tween.kill();
+    const tween = gsap.to(track, {
+      x: () => -(track.scrollWidth - window.innerWidth),
+      ease: 'none',
+      scrollTrigger: { trigger: section, start: 'top top', end: () => `+=${track.scrollWidth - window.innerWidth}`, pin: true, scrub: 1, invalidateOnRefresh: true },
+    });
+    qsa<HTMLImageElement>('.room-card img').forEach((image) => {
+      gsap.to(image, { xPercent: 8, ease: 'none', scrollTrigger: { trigger: image.closest('.room-card'), containerAnimation: tween, start: 'left right', end: 'right left', scrub: true } });
     });
   }
 
@@ -375,7 +361,7 @@ function setupExperience() {
 
 function setupConstruction() {
   const section = qs<HTMLElement>('[data-construction]');
-  if (!section || reducedMotion || window.innerWidth <= 900) return;
+  if (!section || reducedMotion) return;
   const frames = qsa<HTMLElement>('[data-build-frame]', section);
   const labels = ['Blueprint', 'Structure', 'Volume', 'Roof', 'Material', 'Landscape', 'Inhabit'];
   const count = qs<HTMLElement>('[data-build-count]', section);

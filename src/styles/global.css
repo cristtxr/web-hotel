@@ -113,16 +113,16 @@
 
 @layer pages {
   /* Lobby */
-  .preloader { position: fixed; z-index: 300; inset: 0; display: grid; place-items: center; overflow: hidden; background: transparent; color: var(--ink); perspective: 1600px; }
+  .preloader { position: fixed; z-index: 300; inset: 0; display: grid; place-items: center; overflow: hidden; background: transparent; color: var(--bone); perspective: 1600px; }
   .preloader-copy { position: relative; z-index: 5; text-align: center; transform: translateZ(80px); }
   .preloader-copy p { font-size: clamp(1.5rem, 3vw, 3rem); font-weight: 500; letter-spacing: -.04em; }
   .preloader-copy span { display: block; margin-top: .65rem; font-size: .58rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
   .preloader-progress { position: absolute; z-index: 5; right: var(--pad); bottom: 2rem; font-size: .7rem; font-variant-numeric: tabular-nums; transform: translateZ(80px); }
-  .preloader-door { position: absolute; z-index: 3; top: 0; width: 50.05%; height: 100%; background: var(--bone); backface-visibility: hidden; pointer-events: none; box-shadow: inset 0 0 0 1px rgba(17,20,17,.12), inset 0 0 0 clamp(1.2rem,3vw,3rem) rgba(17,20,17,.025); }
-  .preloader-door::before { content: ""; position: absolute; inset: clamp(5rem,10vh,8rem) clamp(2rem,5vw,6rem); border: 1px solid rgba(17,20,17,.12); }
-  .preloader-door--left { left: 0; transform-origin: left center; border-right: 1px solid rgba(17,20,17,.28); }
-  .preloader-door--right { right: 0; transform-origin: right center; border-left: 1px solid rgba(17,20,17,.28); }
-  .door-handle { position: absolute; top: 50%; width: .72rem; height: .72rem; border: 1px solid var(--ink); border-radius: 50%; transform: translateY(-50%); }
+  .preloader-door { position: absolute; z-index: 3; top: 0; width: 50.05%; height: 100%; background: #6e4b2f; backface-visibility: hidden; pointer-events: none; box-shadow: inset 0 0 0 1px rgba(0,0,0,.22), inset 0 0 0 clamp(1.2rem,3vw,3rem) rgba(0,0,0,.08); }
+  .preloader-door::before { content: ""; position: absolute; inset: clamp(5rem,10vh,8rem) clamp(2rem,5vw,6rem); border: 1px solid rgba(255,255,255,.16); }
+  .preloader-door--left { left: 0; transform-origin: left center; border-right: 1px solid rgba(0,0,0,.4); }
+  .preloader-door--right { right: 0; transform-origin: right center; border-left: 1px solid rgba(0,0,0,.4); }
+  .door-handle { position: absolute; top: 50%; width: .72rem; height: .72rem; border: 1px solid var(--bone); border-radius: 50%; transform: translateY(-50%); }
   .preloader-door--left .door-handle { right: 1.4rem; }
   .preloader-door--right .door-handle { left: 1.4rem; }
 
@@ -351,18 +351,19 @@
     .hero-meta { display: none; }
     .hero-intro { bottom: 5.2rem; }
     .scroll-cue { left: var(--pad); right: auto; bottom: 1.8rem; }
-    .showroom { padding-top: 7rem; min-height: 100vh; }
-    .showroom-head { grid-template-columns: 1fr; margin-bottom: 5rem; }
-    .showroom-head h2 { font-size: clamp(3.8rem, 17vw, 6rem); }
-    .showroom-head > p:last-child { padding-top: 1rem; }
-    .portals { height: auto; min-height: 0; display: grid; gap: 3rem; perspective: none; }
-    .portal, .portal--stay, .portal--experience, .portal--place { position: relative; inset: auto; width: 100%; aspect-ratio: .78; transform: none; }
-    .portal:nth-child(2) { width: 88%; margin-left: auto; }
-    .portal:nth-child(3) { width: 92%; }
-    .portals:has(.portal:hover) .portal:not(:hover) { filter: none; opacity: 1; }
-    .portal-title { font-size: clamp(3.8rem, 15vw, 6.2rem); }
-    .portal-action { display: none; }
-    .home-closing { min-height: 100svh; }
+    .home-horizontal { width: 100%; height: 100svh; overflow: hidden; background: var(--paper); }
+    .home-horizontal-track { width: max-content; height: 100%; display: flex; align-items: stretch; will-change: transform; }
+    .home-horizontal .home-hero { width: 100vw; flex: 0 0 100vw; }
+    .home-horizontal .showroom { width: 232vw; min-height: 0; height: 100svh; flex: 0 0 232vw; display: grid; grid-template-columns: 56vw 168vw; gap: 4vw; align-items: center; padding: 0 4vw; overflow: hidden; }
+    .home-horizontal .showroom-head { grid-template-columns: 1fr; align-items: start; margin: 0; }
+    .home-horizontal .showroom-head h2 { font-size: clamp(3.6rem, 14vw, 6rem); }
+    .home-horizontal .showroom-head > p:last-child { max-width: 46vw; padding: 1.6rem 0 0; font-size: .82rem; }
+    .home-horizontal .portals { width: 168vw; height: 80svh; min-height: 0; display: flex; gap: 4vw; align-items: center; perspective: none; }
+    .home-horizontal .portal { position: relative; inset: auto; width: 52vw; flex: 0 0 auto; aspect-ratio: .78; transform: none; }
+    .home-horizontal .portal-title { font-size: clamp(2.2rem, 9vw, 4rem); }
+    .home-horizontal .portal-action { display: none; }
+    .home-horizontal .home-closing { width: 100vw; min-height: 0; height: 100svh; flex: 0 0 100vw; }
+    .home-closing-copy h2 { font-size: clamp(4.2rem, 19vw, 8rem); }
 
     .back-hub { top: calc(var(--header-h) + 1.2rem); }
     .world-hero { min-height: 38rem; }
@@ -373,14 +374,14 @@
     .editorial-intro h2 { font-size: clamp(3.8rem, 17vw, 6.5rem); }
     .editorial-intro > p:last-child { padding: 1rem 0 0; }
 
-    .rooms-showroom { height: auto; overflow: visible; padding: 5rem 0; }
-    .rooms-track { width: 100%; height: auto; display: grid; gap: 5rem; padding: 0 var(--pad); }
-    .room-card, .room-card--portrait { width: 100%; height: auto; min-height: 0; aspect-ratio: 4 / 5; }
-    .room-card:nth-child(2) { width: 88%; margin-left: auto; }
+    .rooms-showroom { height: 100svh; overflow: hidden; padding: 0; }
+    .rooms-track { width: max-content; height: 100%; display: flex; align-items: center; gap: 6vw; padding: 0 12vw 0 var(--pad); }
+    .room-card { width: 80vw; height: 66vh; flex: 0 0 auto; }
+    .room-card--portrait { width: 68vw; height: 72vh; }
     .room-card-copy { inset: auto 1rem 1.2rem; grid-template-columns: 2rem 1fr; }
     .room-card-copy p { display: none; }
-    .room-card h3 { font-size: clamp(4rem, 18vw, 7rem); }
-    .rooms-end { display: none; }
+    .room-card h3 { font-size: clamp(3.2rem, 15vw, 6rem); }
+    .rooms-end { width: 46vw; flex: 0 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
     .journey-head { grid-template-columns: 1fr; }
     .journey-head h2 { font-size: clamp(3.8rem, 16vw, 6rem); }
     .journey-head dl { margin-top: 1rem; }
@@ -414,12 +415,9 @@
     .experience-closing { padding: 8rem var(--pad); }
     .experience-closing h2 { font-size: clamp(4.5rem, 21vw, 8rem); }
 
-    .construction { height: auto; padding: 0 0 5rem; }
-    .construction-stage { position: relative; height: auto; overflow: visible; background: var(--forest); }
-    .construction-frames { position: relative; display: grid; gap: 1px; }
-    .construction-frame, .construction-frame.is-first { position: relative; inset: auto; opacity: 1; clip-path: none; aspect-ratio: 16 / 10; }
-    .construction-frame::after { border-width: .65rem; }
-    .construction-ui { display: none; }
+    .construction { height: 460vh; }
+    .construction-ui { inset: auto var(--pad) calc(1.4rem + env(safe-area-inset-bottom)); grid-template-columns: 1fr auto auto; gap: .9rem; }
+    .construction-progress { display: none; }
     .material-story { min-height: 0; grid-template-columns: 1fr; gap: 5rem; padding: 8rem var(--pad); }
     .material-copy { position: static; }
     .material-copy h2 { font-size: clamp(3.8rem, 16vw, 6rem); }
@@ -451,6 +449,19 @@
     html { scroll-behavior: auto; }
     *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
     .hero-image img, .world-hero-image img, [data-parallax] img { transform: none !important; }
+    .home-horizontal { height: auto; overflow: visible; }
+    .home-horizontal-track { width: 100%; height: auto; display: block; }
+    .home-horizontal .home-hero, .home-horizontal .home-closing { width: 100%; height: auto; min-height: 100svh; }
+    .home-horizontal .showroom { width: 100%; min-height: 100vh; height: auto; display: block; padding: 7rem var(--pad); overflow: visible; }
+    .portals { height: auto; min-height: 0; display: grid; gap: 3rem; perspective: none; }
+    .portal, .portal--stay, .portal--experience, .portal--place { position: relative; inset: auto; width: 100%; aspect-ratio: .78; transform: none; }
+    .portal:nth-child(2) { width: 88%; margin-left: auto; }
+    .portal:nth-child(3) { width: 92%; }
+    .portal-action { display: none; }
+    .rooms-showroom { height: auto; overflow: visible; padding: 5rem 0; }
+    .rooms-track { width: 100%; height: auto; display: grid; gap: 5rem; padding: 0 var(--pad); }
+    .room-card, .room-card--portrait { width: 100%; height: auto; min-height: 0; aspect-ratio: 4 / 5; }
+    .rooms-end { display: none; }
     .construction { height: auto; }
     .construction-stage { position: relative; height: auto; }
     .construction-frames { position: relative; display: grid; }
